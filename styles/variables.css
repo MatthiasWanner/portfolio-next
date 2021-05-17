@@ -1,6 +1,5 @@
 :root {
   /* Navbar and footer size vh */
-  --font-size: 1.2rem;
-  --font-size-bold: 1.3rem;
   --height-header: 75px;
+  --primary-font-color: #f87171;
 }

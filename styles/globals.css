@@ -43,7 +43,22 @@ img {
 
 .profile-img {
   position: absolute;
-  transform: translate(50%, -160%);
+  width: 50%;
+  overflow: hidden;
+  right: 0;
+  transform: translateY(-135%);
+}
+
+.profile-img img {
+  max-width: 200%;
+}
+
+.wp-content-container p {
+  margin-bottom: 20px;
+}
+
+.wp-content-container a {
+  color: var(--primary-font-color);
 }
 
 .wp-block-group__inner-container {
@@ -62,4 +77,24 @@ img {
   width: 32px;
   height: 32px;
   border-radius: 50px;
+}
+
+.wp-block-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.wp-block-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 40px;
+  background: linear-gradient(#f7b4b4, #f87171);
+  border-radius: 5px;
+}
+
+.wp-block-button:hover {
+  background: linear-gradient(#f9a3a3, #fa5353);
+  transform: scale(-O.8);
 }

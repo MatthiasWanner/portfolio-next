@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { CodeIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import PorfolioHead from "../components/PortfolioHead";
 
@@ -20,18 +21,27 @@ interface Iprops {
 }
 
 export default function Projects({ infos, projects }: Iprops): JSX.Element {
+  const mainContainerClasses = "flex flex-col min-h-screen text-white";
+  const titleClasses = "text-2xl text-center mb-10";
+  const listContainer =
+    "flex flex-col flex-grow w-full justify-around items-center";
   return (
     <div>
       <PorfolioHead infos={infos} />
       <Header siteName={infos.name} />
-      <main className={`body-container`}>
-        <h3>Mes projets</h3>
-        <ul>
+      <main className={`body-container ${mainContainerClasses}`}>
+        <h3 className={`${titleClasses}`}>
+          Mes <span className="text-red-400">projets</span>
+        </h3>
+        <ul className={`${listContainer}`}>
           {projects.map((project) => {
             return (
-              <li key={project.id}>
+              <li className="flex items-center" key={project.id}>
+                <CodeIcon className="w-8 mr-5" />
                 <Link href={`/Projects/${project.id}`}>
-                  <a id={project.id}>{project.title}</a>
+                  <a className="text-lg" id={project.id}>
+                    {project.title}
+                  </a>
                 </Link>
               </li>
             );

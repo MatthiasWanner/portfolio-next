@@ -1,7 +1,15 @@
 import Head from "next/head";
+import Header from "../../components/Header";
+import PortfolioHead from "../../components/PortfolioHead";
 import Footer from "../../components/Footer";
 import axios from "axios";
 import WpApiContent from "../../components/WpApiContent";
+import PorfolioHead from "../../components/PortfolioHead";
+
+interface Infos {
+  name: string;
+  description: string;
+}
 
 interface Project {
   id: string;
@@ -16,25 +24,21 @@ interface params {
 }
 
 interface Iprops {
-  infos: {
-    name: string;
-    description: string;
-  };
+  infos: Infos;
   project: Project;
 }
 
 export default function Projects({ infos, project }: Iprops): JSX.Element {
+  const mainContainer = "text-white";
+  const titleClasses = "text-2xl text-center mb-10 text-red-400";
+  const projectContent = "mx-5";
   return (
     <div>
-      <Head>
-        <title>{infos.name}</title>
-        <meta name="description" content={infos.description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={`body-container`}>
-        <h3>{project.title}</h3>
-        <WpApiContent content={project.content} />
+      <PorfolioHead infos={infos} />
+      <Header siteName={infos.name} />
+      <main className={`body-container ${mainContainer}`}>
+        <h3 className={`${titleClasses}`}>{project.title}</h3>
+        <WpApiContent content={project.content} classes={projectContent} />
       </main>
 
       <Footer />
