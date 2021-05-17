@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Footer from "../../components/Footer";
-import styles from "../../styles/Index.module.css";
 import axios from "axios";
 import WpApiContent from "../../components/WpApiContent";
 
@@ -26,14 +25,14 @@ interface Iprops {
 
 export default function Projects({ infos, project }: Iprops): JSX.Element {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>{infos.name}</title>
         <meta name="description" content={infos.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={`body-container`}>
         <h3>{project.title}</h3>
         <WpApiContent content={project.content} />
       </main>

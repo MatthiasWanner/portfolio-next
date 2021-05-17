@@ -1,5 +1,4 @@
 import parse from "html-react-parser";
-import styles from "../styles/WpApiContent.module.css";
 
 interface Iprops {
   content: string;
@@ -7,5 +6,11 @@ interface Iprops {
 
 export default function WpApiContent({ content }: Iprops) {
   const parsedContent = parse(content);
-  return <div className={styles.wpApiContent}>{parsedContent}</div>;
+  const contentContainer = "flex flex-col justify-between h-1/2";
+
+  return (
+    <div className={`wp-content-container ${contentContainer}`}>
+      {parsedContent}
+    </div>
+  );
 }

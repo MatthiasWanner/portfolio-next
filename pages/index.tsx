@@ -1,31 +1,27 @@
-import Head from "next/head";
+import PortfolioHead from "../components/PortfolioHead";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HomePage from "../components/HomePage";
-import styles from "../styles/Index.module.css";
 import axios from "axios";
 
+interface Infos {
+  name: string;
+  description: string;
+}
+
 interface Iprops {
-  infos: {
-    name: string;
-    description: string;
-  };
+  infos: Infos;
   title: string;
   content: string;
 }
 
 export default function Home({ infos, title, content }: Iprops): JSX.Element {
+  const indexContainer = "w-full";
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{infos.name}</title>
-        <meta name="description" content={infos.description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <HomePage title={title} content={content} />
-      </main>
-
+    <div className={`index-container ${indexContainer}`}>
+      <PortfolioHead infos={infos} />
+      <Header siteName={infos.name} />
+      <HomePage name={infos.name} title={title} content={content} />
       <Footer />
     </div>
   );

@@ -1,8 +1,13 @@
-import Head from "next/head";
 import Link from "next/link";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
-import styles from "../styles/Projects.module.css";
 import axios from "axios";
+import PorfolioHead from "../components/PortfolioHead";
+
+interface Infos {
+  name: string;
+  description: string;
+}
 
 interface Project {
   id: string;
@@ -10,23 +15,16 @@ interface Project {
 }
 
 interface Iprops {
-  infos: {
-    name: string;
-    description: string;
-  };
+  infos: Infos;
   projects: Project[];
 }
 
 export default function Projects({ infos, projects }: Iprops): JSX.Element {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{infos.name}</title>
-        <meta name="description" content={infos.description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
+    <div>
+      <PorfolioHead infos={infos} />
+      <Header siteName={infos.name} />
+      <main className={`body-container`}>
         <h3>Mes projets</h3>
         <ul>
           {projects.map((project) => {
