@@ -5,23 +5,29 @@ import HomePage from "../components/HomePage";
 import axios from "axios";
 
 interface Infos {
-  name: string;
+  site_name: string;
   description: string;
+  name: string;
+  profile_img: string;
 }
 
-interface Iprops {
-  infos: Infos;
+interface About {
   title: string;
   content: string;
 }
 
-export default function Home({ infos, title, content }: Iprops): JSX.Element {
-  const indexContainer = "w-full";
+interface Iprops {
+  infos: Infos;
+  about: About;
+}
+
+export default function Home({ infos, about }: Iprops): JSX.Element {
+  const indexContainer = "container m-auto w-full";
   return (
     <div className={`index-container ${indexContainer}`}>
       <PortfolioHead infos={infos} />
-      <Header siteName={infos.name} />
-      <HomePage name={infos.name} title={title} content={content} />
+      <Header siteName={infos.site_name} />
+      <HomePage infos={infos} about={about} />
       <Footer />
     </div>
   );
@@ -29,20 +35,20 @@ export default function Home({ infos, title, content }: Iprops): JSX.Element {
 
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
-  const infosReq = await axios.get("http://localhost:8000/wp-json/");
+  const infosReq = await axios.get(
+    "http://localhost:8000/wp-json/myportfolio/v1/infos"
+  );
   const infos = await infosReq.data;
   const homepageReq = await axios.get(
     "http://localhost:8000/wp-json/myportfolio/v1/about"
   );
-  const title = await homepageReq.data.post_title;
-  const content = await homepageReq.data.post_content;
+  const about = await homepageReq.data;
   // By returning { props: { infos } }, the Blog component
   // will receive `infos` as a prop at build time
   return {
     props: {
       infos,
-      title,
-      content,
+      about,
     },
   };
 }

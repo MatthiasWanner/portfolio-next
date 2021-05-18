@@ -7,8 +7,9 @@ import WpApiContent from "../../components/WpApiContent";
 import PorfolioHead from "../../components/PortfolioHead";
 
 interface Infos {
-  name: string;
+  site_name: string;
   description: string;
+  name: string;
 }
 
 interface Project {
@@ -33,7 +34,7 @@ export default function Projects({ infos, project }: Iprops): JSX.Element {
   const titleClasses = "text-2xl text-center mb-10 text-red-400";
   const projectContent = "mx-5";
   return (
-    <div>
+    <div className="container">
       <PorfolioHead infos={infos} />
       <Header siteName={infos.name} />
       <main className={`body-container ${mainContainer}`}>

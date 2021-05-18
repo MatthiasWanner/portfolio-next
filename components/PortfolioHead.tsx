@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 interface Infos {
-  name: string;
+  site_name: string;
   description: string;
 }
 
@@ -12,7 +12,7 @@ interface Iprops {
 function PorfolioHead({ infos }: Iprops): JSX.Element {
   return (
     <Head>
-      <title>{infos.name}</title>
+      <title>{infos.site_name}</title>
       <meta name="description" content={infos.description} />
       <link rel="icon" href="/favicon.ico" />
     </Head>

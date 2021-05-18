@@ -42,14 +42,6 @@ img {
 }
 
 .profile-img {
-  position: absolute;
-  width: 50%;
-  overflow: hidden;
-  right: 0;
-  transform: translateY(-135%);
-}
-
-.profile-img img {
   max-width: 200%;
 }
 
@@ -93,8 +85,17 @@ img {
   background: linear-gradient(#f7b4b4, #f87171);
   border-radius: 5px;
 }
+.wp-block-button a {
+  color: white;
+}
 
 .wp-block-button:hover {
   background: linear-gradient(#f9a3a3, #fa5353);
   transform: scale(-O.8);
+}
+
+@media screen and (min-width: 768px) {
+  .profile-img {
+    max-width: 100%;
+  }
 }

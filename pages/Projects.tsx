@@ -6,6 +6,7 @@ import axios from "axios";
 import PorfolioHead from "../components/PortfolioHead";
 
 interface Infos {
+  site_name: string;
   name: string;
   description: string;
 }
@@ -26,7 +27,7 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
   const listContainer =
     "flex flex-col flex-grow w-full justify-around items-center";
   return (
-    <div>
+    <div className="container">
       <PorfolioHead infos={infos} />
       <Header siteName={infos.name} />
       <main className={`body-container ${mainContainerClasses}`}>
@@ -36,7 +37,7 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
         <ul className={`${listContainer}`}>
           {projects.map((project) => {
             return (
-              <li className="flex items-center" key={project.id}>
+              <li className="flex items-center mb-5" key={project.id}>
                 <CodeIcon className="w-8 mr-5" />
                 <Link href={`/Projects/${project.id}`}>
                   <a className="text-lg" id={project.id}>
