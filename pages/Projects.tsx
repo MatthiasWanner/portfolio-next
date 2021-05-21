@@ -23,13 +23,13 @@ interface Iprops {
 
 export default function Projects({ infos, projects }: Iprops): JSX.Element {
   const mainContainerClasses = "flex flex-col min-h-screen text-white";
-  const titleClasses = "text-2xl text-center mb-10";
+  const titleClasses = "text-4xl text-center mb-10";
   const listContainer =
-    "flex flex-col flex-grow w-full justify-around items-center";
+    "flex flex-col flex-grow w-full justify-around items-center px-5";
   return (
-    <div className="container">
+    <div className="container m-auto">
       <PorfolioHead infos={infos} />
-      <Header siteName={infos.name} />
+      <Header siteName={infos.site_name} />
       <main className={`body-container ${mainContainerClasses}`}>
         <h3 className={`${titleClasses}`}>
           Mes <span className="text-red-400">projets</span>
@@ -40,7 +40,7 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
               <li className="flex items-center mb-5" key={project.id}>
                 <CodeIcon className="w-8 mr-5" />
                 <Link href={`/Projects/${project.id}`}>
-                  <a className="text-lg" id={project.id}>
+                  <a className="text-2xl md:text-3xl" id={project.id}>
                     {project.title}
                   </a>
                 </Link>
@@ -57,10 +57,12 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
 
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
-  const infosReq = await axios.get("http://localhost:8000/wp-json/");
+  const infosReq = await axios.get(
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+  );
   const infos = await infosReq.data;
   const projectsReq = await axios.get(
-    "http://localhost:8000/wp-json/myportfolio/v1/projects"
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects"
   );
   const projects: Project[] = projectsReq.data.map((project: Project) => {
     return {

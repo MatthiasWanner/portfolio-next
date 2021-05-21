@@ -18,18 +18,18 @@ interface Iprops {
 
 export default function HomePage({ infos, about }: Iprops): JSX.Element {
   const titleContainer =
-    "flex flex-wrap justify-center items-center w-full h-screen";
+    "container flex flex-wrap justify-center items-center h-screen";
   const titleClasses = "flex flex-col w-3/5 items-start text-5xl z-10 mr-16";
   const spanClasses = "text-white my-5";
   const nameClasses = "text-6xl text-red-400";
   const imgContainerClasses = "absolute right-0 bottom-0 w-1/2 overflow-hidden";
-  const imgContainerClassesMd = "md:w-1/4";
+  const imgContainerClassesMd = "md:w-5/12";
   const imgClasses = "";
   const aboutContainerClasses = "text-white p-5 w-screen h-screen";
   const aboutContainerClassesMd = "md:w-1/2";
   const aboutContentClasses = "flex flex-col justify-between h-1/2";
   return (
-    <section>
+    <section className="container">
       <div className={`title-container ${titleContainer}`}>
         <h2 className={`${titleClasses}`}>
           <span className={`${spanClasses}`}>Salut, moi</span>

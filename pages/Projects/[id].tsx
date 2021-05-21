@@ -31,12 +31,12 @@ interface Iprops {
 
 export default function Projects({ infos, project }: Iprops): JSX.Element {
   const mainContainer = "text-white";
-  const titleClasses = "text-2xl text-center mb-10 text-red-400";
+  const titleClasses = "text-4xl text-center mb-10 text-red-400";
   const projectContent = "mx-5";
   return (
-    <div className="container">
+    <div className="container m-auto">
       <PorfolioHead infos={infos} />
-      <Header siteName={infos.name} />
+      <Header siteName={infos.site_name} />
       <main className={`body-container ${mainContainer}`}>
         <h3 className={`${titleClasses}`}>{project.title}</h3>
         <WpApiContent content={project.content} classes={projectContent} />
@@ -50,7 +50,7 @@ export default function Projects({ infos, project }: Iprops): JSX.Element {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const res = await axios.get(
-    "http://localhost:8000/wp-json/myportfolio/v1/projects/"
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/"
   );
   const projects = await res.data;
 
@@ -67,10 +67,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: params) {
   console.log(params.id);
   // Call an external API endpoint to get metadata
-  const infosReq = await axios.get("http://localhost:8000/wp-json/");
+  const infosReq = await axios.get(
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+  );
   const infos = await infosReq.data;
   const projectReq = await axios.get(
-    `http://localhost:8000/wp-json/myportfolio/v1/projects/${params.id}`
+    `https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/${params.id}`
   );
   const project: Project[] = await projectReq.data;
   // By returning { props: { infos } }, the Blog component

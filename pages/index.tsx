@@ -36,11 +36,11 @@ export default function Home({ infos, about }: Iprops): JSX.Element {
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "http://localhost:8000/wp-json/myportfolio/v1/infos"
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
   );
   const infos = await infosReq.data;
   const homepageReq = await axios.get(
-    "http://localhost:8000/wp-json/myportfolio/v1/about"
+    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/about"
   );
   const about = await homepageReq.data;
   // By returning { props: { infos } }, the Blog component
