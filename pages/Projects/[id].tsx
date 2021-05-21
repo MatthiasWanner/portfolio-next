@@ -50,7 +50,7 @@ export default function Projects({ infos, project }: Iprops): JSX.Element {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const res = await axios.get(
-    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/"
+    "http://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/"
   );
   const projects = await res.data;
 
@@ -68,11 +68,11 @@ export async function getStaticProps({ params }: params) {
   console.log(params.id);
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+    "http://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
   );
   const infos = await infosReq.data;
   const projectReq = await axios.get(
-    `https://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/${params.id}`
+    `http://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects/${params.id}`
   );
   const project: Project[] = await projectReq.data;
   // By returning { props: { infos } }, the Blog component
