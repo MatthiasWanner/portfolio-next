@@ -58,11 +58,11 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "http://admin.matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+    "http://matthiaswanner.fr/wp-json/myportfolio/v1/infos"
   );
   const infos = await infosReq.data;
   const projectsReq = await axios.get(
-    "http://admin.matthiaswanner.fr/wp-json/myportfolio/v1/projects"
+    "http://matthiaswanner.fr/wp-json/myportfolio/v1/projects"
   );
   const projects: Project[] = projectsReq.data.map((project: Project) => {
     return {
