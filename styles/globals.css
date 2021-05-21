@@ -51,7 +51,9 @@ img {
   max-width: 200%;
 }
 
-.wp-content-container p {
+.wp-content-container p,
+.wp-content-container figure,
+.wp-content-container ul {
   margin-bottom: 20px;
 }
 
