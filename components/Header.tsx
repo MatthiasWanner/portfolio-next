@@ -15,7 +15,7 @@ export default function Header({ siteName }: Iprops) {
   const headerClasses =
     "container fixed flex justify-between px-5 text-white z-20";
   const titleClasses = "flex items-center text-4xl";
-  const menuContainerClasses = "w-1/5 h-full md:w-1/12 md:px-4";
+  const menuContainerClasses = "w-20 h-full";
   const menuClasses = "absolute right-0 top-0 w-screen h-screen md:w-1/4";
   return (
     <header className={`header ${headerClasses}`}>

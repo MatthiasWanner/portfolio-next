@@ -106,4 +106,20 @@ img {
   .profile-img {
     max-width: 100%;
   }
+
+  .wp-block-gallery {
+    max-width: 100%;
+  }
+
+  .wp-block-gallery ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .wp-block-gallery li {
+    min-width: max-content;
+    margin: 0 10px;
+  }
 }

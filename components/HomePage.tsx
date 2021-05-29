@@ -29,7 +29,7 @@ export default function HomePage({ infos, about }: Iprops): JSX.Element {
   const aboutContainerClassesMd = "md:w-1/2";
   const aboutContentClasses = "flex flex-col justify-between h-1/2";
   return (
-    <section className="container">
+    <section className="container box-border">
       <div className={`title-container ${titleContainer}`}>
         <h2 className={`${titleClasses}`}>
           <span className={`${spanClasses}`}>Salut, moi</span>
