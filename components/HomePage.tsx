@@ -1,5 +1,5 @@
 import WpApiContent from "./WpApiContent";
-import { useEffect, useState } from "react";
+import { useAnimation } from "../hooks/useAnimation";
 
 interface Infos {
   name: string;
@@ -17,13 +17,7 @@ interface Iprops {
 }
 
 export default function HomePage({ infos, about }: Iprops): JSX.Element {
-  const [isAnimate, setIsAnimate] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsAnimate((prevState) => !prevState);
-    }, 300);
-  }, []);
+  const isAnimate = useAnimation();
 
   const titleContainer =
     "container relative flex flex-wrap justify-center items-center h-screen";
@@ -36,7 +30,7 @@ export default function HomePage({ infos, about }: Iprops): JSX.Element {
   const imgClasses = "duration-500";
   const aboutContainerClasses = "text-white p-5 w-screen h-screen";
   const aboutContainerClassesMd = "md:w-1/2";
-  const aboutContentClasses = "flex flex-col justify-between h-1/2";
+  const aboutContentClasses = "flex flex-col justify-between min-h-1/2";
   return (
     <section className="container box-border">
       <div className={`title-container ${titleContainer}`}>

@@ -55,6 +55,7 @@ img {
 .wp-content-container figure,
 .wp-content-container ul {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .wp-content-container a {
@@ -65,6 +66,7 @@ img {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 5px;
 }
 
@@ -100,6 +102,21 @@ img {
 .wp-block-button:hover {
   background: linear-gradient(#f9a3a3, #fa5353);
   transform: scale(-O.8);
+}
+
+.about-stack-logos {
+  width: 100%;
+}
+
+.about-stack-logos ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-stack-logos li {
+  margin: 5px;
 }
 
 @media screen and (min-width: 768px) {

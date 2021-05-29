@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { CodeIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import PorfolioHead from "../components/PortfolioHead";
+import { useAnimation } from "../hooks/useAnimation";
 
 interface Infos {
   site_name: string;
@@ -22,22 +23,33 @@ interface Iprops {
 }
 
 export default function Projects({ infos, projects }: Iprops): JSX.Element {
+  const isAnimate = useAnimation();
+
   const mainContainerClasses = "flex flex-col min-h-screen text-white";
-  const titleClasses = "text-4xl text-center mb-10";
+  const titleClasses = "text-4xl text-center mb-10 duration-500";
   const listContainer =
-    "flex flex-col flex-grow w-full justify-around items-center px-5";
+    "flex flex-col flex-grow w-full justify-around items-center px-5 overflow-auto";
   return (
     <div className="container m-auto">
       <PorfolioHead infos={infos} />
       <Header siteName={infos.site_name} />
       <main className={`body-container ${mainContainerClasses}`}>
-        <h3 className={`${titleClasses}`}>
+        <h3
+          className={`${titleClasses} ${
+            isAnimate ? "transform opacity-0 -translate-y-10" : ""
+          }`}
+        >
           Mes <span className="text-red-400">projets</span>
         </h3>
         <ul className={`${listContainer}`}>
           {projects.map((project) => {
             return (
-              <li className="flex items-center mb-5" key={project.id}>
+              <li
+                className={`flex items-center mb-5 duration-500 ${
+                  isAnimate ? "transform opacity-0 translate-y-10" : ""
+                }`}
+                key={project.id}
+              >
                 <CodeIcon className="w-8 mr-5" />
                 <Link href={`/Projects/${project.id}`}>
                   <a className="text-2xl md:text-3xl" id={project.id}>

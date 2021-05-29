@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import axios from "axios";
 import WpApiContent from "../../components/WpApiContent";
 import PorfolioHead from "../../components/PortfolioHead";
+import { useAnimation } from "../../hooks/useAnimation";
 
 interface Infos {
   site_name: string;
@@ -30,11 +31,17 @@ interface Iprops {
 }
 
 export default function Projects({ infos, project }: Iprops): JSX.Element {
+  const isAnimate = useAnimation();
+
   const mainContainer = "text-white scrollbar";
   const titleClasses = "text-4xl text-center mb-10 text-red-400";
   const projectContent = "mx-5";
   return (
-    <div className="container m-auto">
+    <div
+      className={`container m-auto duration-500 ${
+        isAnimate ? "transform opacity-0" : ""
+      }`}
+    >
       <PorfolioHead infos={infos} />
       <Header siteName={infos.site_name} />
       <main className={`body-container ${mainContainer}`}>
