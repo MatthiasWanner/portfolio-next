@@ -8,15 +8,16 @@ interface Iprops {
 }
 
 export default function Header({ siteName }: Iprops) {
-  const [hidden, setHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
 
-  const handleClickBurger = () => setHidden((prevState) => !prevState);
+  const handleClickBurger = () => setIsHidden((prevState) => !prevState);
 
   const headerClasses =
     "container fixed flex justify-between px-5 text-white z-20";
   const titleClasses = "flex items-center text-4xl";
   const menuContainerClasses = "w-20 h-full";
-  const menuClasses = "absolute right-0 top-0 w-screen h-screen md:w-1/4";
+  const menuClasses =
+    "absolute right-0 top-0 w-screen h-screen md:w-1/4 transition ease-in-out duration-500";
   return (
     <header className={`header ${headerClasses}`}>
       <div className={`logo portfolio-title ${titleClasses}`}>
@@ -25,8 +26,12 @@ export default function Header({ siteName }: Iprops) {
         </Link>
       </div>
       <div className={`menu-container ${menuContainerClasses}`}>
-        <Burger handleClick={handleClickBurger} />
-        <div className={`menu ${menuClasses} ${hidden ? "hidden" : "block"}`}>
+        <Burger handleClick={handleClickBurger} closed={isHidden} />
+        <div
+          className={`menu ${menuClasses} ${
+            isHidden ? "block transform translate-x-full opacity-0" : "block"
+          }`}
+        >
           <Menu />
         </div>
       </div>

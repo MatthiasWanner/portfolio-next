@@ -30,7 +30,7 @@ interface Iprops {
 }
 
 export default function Projects({ infos, project }: Iprops): JSX.Element {
-  const mainContainer = "text-white";
+  const mainContainer = "text-white scrollbar";
   const titleClasses = "text-4xl text-center mb-10 text-red-400";
   const projectContent = "mx-5";
   return (
