@@ -18,12 +18,12 @@ interface Iprops {
 
 export default function HomePage({ infos, about }: Iprops): JSX.Element {
   const titleContainer =
-    "container flex flex-wrap justify-center items-center h-screen";
+    "container relative flex flex-wrap justify-center items-center h-screen";
   const titleClasses = "flex flex-col w-3/5 items-start text-5xl z-10 mr-16";
   const spanClasses = "text-white my-5";
   const nameClasses = "text-6xl text-red-400";
   const imgContainerClasses = "absolute right-0 bottom-0 w-1/2 overflow-hidden";
-  const imgContainerClassesMd = "md:w-5/12";
+  const imgContainerClassesResponsive = "md:w-3/5 xl:w-5/12";
   const imgClasses = "";
   const aboutContainerClasses = "text-white p-5 w-screen h-screen";
   const aboutContainerClassesMd = "md:w-1/2";
@@ -36,7 +36,9 @@ export default function HomePage({ infos, about }: Iprops): JSX.Element {
           <span className={`${spanClasses}`}>c'est</span>
           <span className={`${spanClasses} ${nameClasses}`}>{infos.name}</span>
         </h2>
-        <div className={`${imgContainerClasses} ${imgContainerClassesMd}`}>
+        <div
+          className={`${imgContainerClasses} ${imgContainerClassesResponsive}`}
+        >
           <img
             className={`profile-img ${imgClasses}`}
             src={infos.profile_img}
