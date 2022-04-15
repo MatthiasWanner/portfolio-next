@@ -1,10 +1,10 @@
-import Link from "next/link";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { CodeIcon } from "@heroicons/react/solid";
-import axios from "axios";
-import PorfolioHead from "../components/PortfolioHead";
-import { useAnimation } from "../hooks/useAnimation";
+import Link from 'next/link';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { CodeIcon } from '@heroicons/react/solid';
+import axios from 'axios';
+import PorfolioHead from '../components/PortfolioHead';
+import { useAnimation } from '../hooks/useAnimation';
 
 interface Infos {
   site_name: string;
@@ -25,10 +25,10 @@ interface Iprops {
 export default function Projects({ infos, projects }: Iprops): JSX.Element {
   const isAnimate = useAnimation();
 
-  const mainContainerClasses = "flex flex-col min-h-screen text-white";
-  const titleClasses = "text-4xl text-center mb-10 duration-500";
+  const mainContainerClasses = 'flex flex-col min-h-screen text-white';
+  const titleClasses = 'text-4xl text-center mb-10 duration-500';
   const listContainer =
-    "flex flex-col flex-grow w-full justify-around items-center px-5 overflow-auto";
+    'flex flex-col flex-grow w-full justify-around items-center px-5 overflow-auto';
   return (
     <div className="container m-auto">
       <PorfolioHead infos={infos} />
@@ -36,7 +36,7 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
       <main className={`body-container ${mainContainerClasses}`}>
         <h3
           className={`${titleClasses} ${
-            isAnimate ? "transform opacity-0 -translate-y-10" : ""
+            isAnimate ? 'transform opacity-0 -translate-y-10' : ''
           }`}
         >
           Mes <span className="text-red-400">projets</span>
@@ -46,7 +46,7 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
             return (
               <li
                 className={`flex items-center mb-5 duration-500 ${
-                  isAnimate ? "transform opacity-0 translate-y-10" : ""
+                  isAnimate ? 'transform opacity-0 translate-y-10' : ''
                 }`}
                 key={project.id}
               >
@@ -70,16 +70,16 @@ export default function Projects({ infos, projects }: Iprops): JSX.Element {
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/infos'
   );
   const infos = await infosReq.data;
   const projectsReq = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/projects"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/projects'
   );
   const projects: Project[] = projectsReq.data.map((project: Project) => {
     return {
       id: project.id,
-      title: project.title,
+      title: project.title
     };
   });
   // By returning { props: { infos } }, the Blog component
@@ -87,7 +87,8 @@ export async function getStaticProps() {
   return {
     props: {
       infos,
-      projects,
+      projects
     },
+    revalidate: 60
   };
 }

@@ -1,11 +1,11 @@
-import Head from "next/head";
-import Header from "../../components/Header";
-import PortfolioHead from "../../components/PortfolioHead";
-import Footer from "../../components/Footer";
-import axios from "axios";
-import WpApiContent from "../../components/WpApiContent";
-import PorfolioHead from "../../components/PortfolioHead";
-import { useAnimation } from "../../hooks/useAnimation";
+import Head from 'next/head';
+import Header from '../../components/Header';
+import PortfolioHead from '../../components/PortfolioHead';
+import Footer from '../../components/Footer';
+import axios from 'axios';
+import WpApiContent from '../../components/WpApiContent';
+import PorfolioHead from '../../components/PortfolioHead';
+import { useAnimation } from '../../hooks/useAnimation';
 
 interface Infos {
   site_name: string;
@@ -33,13 +33,13 @@ interface Iprops {
 export default function Projects({ infos, project }: Iprops): JSX.Element {
   const isAnimate = useAnimation();
 
-  const mainContainer = "text-white scrollbar";
-  const titleClasses = "text-4xl text-center mb-10 text-red-400";
-  const projectContent = "mx-5";
+  const mainContainer = 'text-white scrollbar';
+  const titleClasses = 'text-4xl text-center mb-10 text-red-400';
+  const projectContent = 'mx-5';
   return (
     <div
       className={`container m-auto duration-500 ${
-        isAnimate ? "transform opacity-0" : ""
+        isAnimate ? 'transform opacity-0' : ''
       }`}
     >
       <PorfolioHead infos={infos} />
@@ -57,13 +57,13 @@ export default function Projects({ infos, project }: Iprops): JSX.Element {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const res = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/projects/"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/projects/'
   );
   const projects = await res.data;
 
   // Get the paths we want to pre-render based on posts
   const paths = projects.map((project: Project) => ({
-    params: { id: project.id.toString() },
+    params: { id: project.id.toString() }
   }));
 
   // We'll pre-render only these paths at build time.
@@ -75,7 +75,7 @@ export async function getStaticProps({ params }: params) {
   console.log(params.id);
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/infos'
   );
   const infos = await infosReq.data;
   const projectReq = await axios.get(
@@ -87,7 +87,8 @@ export async function getStaticProps({ params }: params) {
   return {
     props: {
       infos,
-      project,
+      project
     },
+    revalidate: 60
   };
 }

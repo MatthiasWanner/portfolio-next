@@ -1,8 +1,8 @@
-import PortfolioHead from "../components/PortfolioHead";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HomePage from "../components/HomePage";
-import axios from "axios";
+import PortfolioHead from '../components/PortfolioHead';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import HomePage from '../components/HomePage';
+import axios from 'axios';
 
 interface Infos {
   site_name: string;
@@ -22,7 +22,7 @@ interface Iprops {
 }
 
 export default function Home({ infos, about }: Iprops): JSX.Element {
-  const indexContainer = "container m-auto w-full";
+  const indexContainer = 'container m-auto w-full';
   return (
     <div className={`index-container ${indexContainer}`}>
       <PortfolioHead infos={infos} />
@@ -36,11 +36,11 @@ export default function Home({ infos, about }: Iprops): JSX.Element {
 export async function getStaticProps() {
   // Call an external API endpoint to get metadata
   const infosReq = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/infos"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/infos'
   );
   const infos = await infosReq.data;
   const homepageReq = await axios.get(
-    "http://matthiaswanner.fr/wp-json/myportfolio/v1/about"
+    'http://matthiaswanner.fr/wp-json/myportfolio/v1/about'
   );
   const about = await homepageReq.data;
   // By returning { props: { infos } }, the Blog component
@@ -48,7 +48,8 @@ export async function getStaticProps() {
   return {
     props: {
       infos,
-      about,
+      about
     },
+    revalidate: 60
   };
 }
