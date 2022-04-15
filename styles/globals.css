@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("variables.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('variables.css');
 
 html,
 body {
@@ -40,7 +40,7 @@ img {
 }
 
 .portfolio-title {
-  font-family: "Poppins, sans-serif";
+  font-family: 'Poppins, sans-serif';
 }
 
 .about-title {
@@ -56,6 +56,8 @@ img {
 .wp-content-container ul {
   margin-bottom: 20px;
   margin-top: 20px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .wp-content-container a {
@@ -106,13 +108,16 @@ img {
 
 .about-stack-logos {
   width: 100%;
-}
-
-.about-stack-logos ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  align-items: center;
+}
+
+.about-stack-logos figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
 
 .about-stack-logos li {
